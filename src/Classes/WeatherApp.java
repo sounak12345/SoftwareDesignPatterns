@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class WeatherData implements Subject {
+    //https://stackoverflow.com/questions/50183111/the-best-way-to-have-multiple-observer-lists-in-observer-pattern
     private ArrayList<Observer> observers = new ArrayList<Observer>();
     private String temperature;
     private String humidity;
@@ -18,10 +19,14 @@ public class WeatherData implements Subject {
 
     @Override
     public void notifyObservers() {
-        for (Observer o : o) {
+        for (Observer o : o) {  ////https://docs.oracle.com/javase/7/docs/api/java/util/Observable.html
             observer.update(temperature,humidity,pressure); //Remove Line regarding for loop
         }
     }
+
+    public String getTemperature() {return temperature;}
+    public String getHumidity() {return humidity;}
+    public String getPressure() {return pressure;}
 
     @Override
     public void measurementsChanged() {
